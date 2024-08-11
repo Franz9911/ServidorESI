@@ -1,0 +1,9 @@
+//crear un componente
+nest g res nombreDeTuComponente
+
+//para crear la entidad en la DB deemos crear un constructor en el service
+ejem: 
+  constructor(
+    @InjectRepository(Producto)
+    private productoRepo: Repository<Producto>
+  ){}
