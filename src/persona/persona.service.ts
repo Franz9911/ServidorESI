@@ -28,15 +28,19 @@ export class PersonaService {
   findAll(): Promise<Persona[]> {
     return this.personaRepository.find();
   }
+  //buscar personas sin registro de usuario
+  async findPersonasSinUsuario(): Promise<Persona[]> {
+    return this.personaRepository
+        .createQueryBuilder('persona') //crear una consulta 'persona' es un alias para la entidad Persona
+        .leftJoinAndSelect('persona.usuario', 'usuario') //une las tablas persona y usuario mediante la relacion persona,usuario 
+        .where('usuario.id IS NULL') //selecciona las filas con el id de usuario igual a null
+        .getMany();//ejecuta la consulta y retorna el array
+}
 
   findOne(id:any):Promise<Persona> {
     return this.personaRepository.findOneBy({id});
   }
     
-      // Método corregido
-    //async bApellidoM(apellidoM: string): Promise<Persona[]> {
-    //return this.personaRepository.find({ where: { apellidoM  } });
-    //}
     async bApellidoM(apellidoM: string): Promise<Persona[]> {
       const personas = await this.personaRepository.find({ where: { apellidoM } });
       console.log('Resultados:', personas);

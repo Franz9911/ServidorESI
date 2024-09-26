@@ -52,6 +52,11 @@ export class PersonaController {
   remove(@Param('id') id: string) {
     return this.personaService.remove(+id);
   }
+
+  @Get('sinUsuario')
+  async getPersonasSinUsusario():Promise<Persona[]>{
+    return this.personaService.findPersonasSinUsuario();
+  }
 }
 
 

@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, IsNull, Not, PrimaryGeneratedColumn } from "typeorm";
+import { Usuario } from "src/usuario/entities/usuario.entity";
+import { Column, CreateDateColumn, Entity, IsNull, Not, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Persona {
@@ -16,4 +17,6 @@ export class Persona {
     telefono:number;
     @CreateDateColumn({ type: 'date' }) // Fecha de creación automática
     fechaRegistro: Date;
+    @OneToOne(()=>Usuario,usuario=>(usuario.persona))
+    usuario:Usuario
 }

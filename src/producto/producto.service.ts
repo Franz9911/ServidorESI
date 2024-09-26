@@ -20,6 +20,8 @@ export class ProductoService {
     });
   }
 
+
+
   findOne(id: number) {
     return this.productoRepo.findOneBy({id});
   }

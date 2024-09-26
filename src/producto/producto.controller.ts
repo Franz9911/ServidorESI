@@ -41,23 +41,6 @@ export class ProductoController {
       }
 
 
-  /*@Post('agregar/')
-  async create(
-    request:Request,
-    @UploadedFile() file: Express.Multer.File, 
-    @Body() createProductoDto: CreateProductoDto) {
-    console.log(request)
-    const producto = new Producto();
-
-    producto.nombre = createProductoDto.nombre;
-    producto.descripcion = createProductoDto.descripcion;
-    producto.modelo=createProductoDto.modelo;
-    producto.marca=createProductoDto.marca;
-    
-    producto.imagen = file.filename; // Guarda el nombre del archivo en la DB
-    return this.productoService.create(producto);
-  }
-*/
   @Get('listar/')
   findAll(@Req() request: Request) {
     const userAgent = request;
